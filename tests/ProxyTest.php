@@ -37,3 +37,27 @@ test('it can proxy set calls', function () {
 
     expect($target->name)->toEqual('John');
 });
+
+test('it can proxy method calls', function () {
+    $target = new Proxy(new Target, [
+        'call' => function (Target $target, string $name, array $arguments = []) {
+            $property = '_' . $name;
+
+            return $target->{$property};
+        },
+    ]);
+
+    expect($target->name())->toEqual('Ryan');
+});
+
+test('it can proxy method calls with arguments', function () {
+    $target = new Proxy(new Target, [
+        'call' => function (Target $target, string $name, array $arguments = []) {
+            $property = '_' . $name;
+
+            return $arguments[0] . $target->{$property};
+        },
+    ]);
+
+    expect($target->name('Hello, '))->toEqual('Hello, Ryan');
+});
