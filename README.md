@@ -16,7 +16,7 @@ If you would like to support the on going maintenance and development of this pa
 You can install the package via composer:
 
 ```bash
-composer require vendor_slug/package_slug
+composer require ryangjchandler/proxy
 ```
 
 You can publish and run the migrations with:
