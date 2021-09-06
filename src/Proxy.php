@@ -7,7 +7,8 @@ class Proxy
     public function __construct(
         protected object $target,
         protected array $handlers,
-    ) {}
+    ) {
+    }
 
     public function __get(string $name)
     {
