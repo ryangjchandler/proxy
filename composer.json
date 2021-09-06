@@ -1,16 +1,16 @@
 {
     "name": "vendor_slug/package_slug",
-    "description": ":package_description",
+    "description": "Proxy method and property interactions in PHP.",
     "keywords": [
-        ":vendor_name",
+        "ryangjchandler",
         "package_slug"
     ],
     "homepage": "https://github.com/vendor_slug/package_slug",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Ryan Chandler",
+            "email": "support@ryangjchandler.co.uk",
             "role": "Developer"
         }
     ],
@@ -27,13 +27,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "RyanChandler\\Proxy\\": "src",
+            "RyanChandler\\Proxy\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "RyanChandler\\Proxy\\Tests\\": "tests"
         }
     },
     "scripts": {
