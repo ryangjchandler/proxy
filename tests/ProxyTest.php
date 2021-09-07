@@ -8,19 +8,19 @@ class Target
 }
 
 test('it can proxy get calls', function () {
-    $target = new Proxy(new Target, [
+    $target = new Proxy(new Target(), [
         'get' => function (Target $target, string $name) {
             $property = '_' . $name;
 
             return $target->{$property};
-        }
+        },
     ]);
 
     expect($target->name)->toEqual('Ryan');
 });
 
 test('it can proxy set calls', function () {
-    $target = new Proxy(new Target, [
+    $target = new Proxy(new Target(), [
         'get' => function (Target $target, string $name) {
             $property = '_' . $name;
 
@@ -30,7 +30,7 @@ test('it can proxy set calls', function () {
             $property = '_' . $name;
 
             $target->{$property} = $value;
-        }
+        },
     ]);
 
     $target->name = 'John';
