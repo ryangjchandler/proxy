@@ -1,11 +1,11 @@
 {
-    "name": "vendor_slug/package_slug",
+    "name": "ryangjchandler/proxy",
     "description": "Proxy method and property interactions in PHP.",
     "keywords": [
         "ryangjchandler",
         "package_slug"
     ],
-    "homepage": "https://github.com/vendor_slug/package_slug",
+    "homepage": "https://github.com/ryangjchandler/proxy",
     "license": "MIT",
     "authors": [
         {
