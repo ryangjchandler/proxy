@@ -13,36 +13,74 @@ If you would like to support the on going maintenance and development of this pa
 
 ## Installation
 
-You can install the package via composer:
+You can install the package via Composer:
 
 ```bash
 composer require ryangjchandler/proxy
 ```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --provider="RyanChandler\Proxy\ProxyServiceProvider" --tag="proxy-migrations"
-php artisan migrate
-```
-
-You can publish the config file with:
-```bash
-php artisan vendor:publish --provider="RyanChandler\Proxy\ProxyServiceProvider" --tag="proxy-config"
-```
-
-This is the contents of the published config file:
-
-```php
-return [
-];
-```
-
 ## Usage
 
+This package provides a `Proxy` class that you can use to wrap any object. It allows you to intercept property access and assignments, as well as method calls.
+
+Here's an example:
+
 ```php
-$skeleton = new RyanChandler\Proxy();
-echo $skeleton->echoPhrase('Hello, world!');
+class Target
+{
+    public $firstName = 'Ryan';
+
+    public $lastName = 'Chandler';
+}
+
+$proxy = new Proxy(new Target, [
+    'get' => function (Target $target, string $property) {
+        if ($property === 'fullName') {
+            return $target->firstName . ' ' . $target->lastName;
+        }
+
+        return $target->{$property};
+    },
+]);
+
+$proxy->fullName; // 'Ryan Chandler'
+```
+
+If you would like to handle "setting" a property's value, you can add a `set` key and callback function to the handlers array.
+
+```php
+$proxy = new Proxy(new Target, [
+    'set' => function (Target $target, string $property, mixed $value) {
+        if ($property === 'fullName') {
+            $parts = explode(' ', $value);
+
+            $target->firstName = $parts[0];
+            $target->lastName = $parts[1];
+        } else {
+            $target->{$property} = $value;
+        }
+    },
+]);
+```
+
+To intercept method calls, add a `call` key to the array.
+
+```php
+class Target
+{
+    public int $number = 10;
+}
+
+$proxy = new Proxy(new Target, [
+    'call' => function (Target $target, string $method, array $arguments) {
+        if ($method === 'toInt') {
+            return $target->number;
+        }
+
+        return $target->{$method}(...$arguments);
+    },
+]);
+
+$proxy->toInt(); // 10
 ```
 
 ## Testing
