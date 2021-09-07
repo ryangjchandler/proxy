@@ -5,7 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/ryangjchandler/proxy/Check%20&%20fix%20styling?label=code%20style)](https://github.com/ryangjchandler/proxy/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/ryangjchandler/proxy.svg?style=flat-square)](https://packagist.org/packages/ryangjchandler/proxy)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+Provides a `Proxy` class that can be used to intercept method calls, property access and updates.
 
 ## Support development
 
