@@ -39,7 +39,7 @@ test('it can proxy set calls', function () {
 });
 
 test('it can proxy method calls', function () {
-    $target = new Proxy(new Target, [
+    $target = new Proxy(new Target(), [
         'call' => function (Target $target, string $name, array $arguments = []) {
             $property = '_' . $name;
 
@@ -51,7 +51,7 @@ test('it can proxy method calls', function () {
 });
 
 test('it can proxy method calls with arguments', function () {
-    $target = new Proxy(new Target, [
+    $target = new Proxy(new Target(), [
         'call' => function (Target $target, string $name, array $arguments = []) {
             $property = '_' . $name;
 
