@@ -3,7 +3,7 @@
     "description": "Proxy method and property interactions in PHP.",
     "keywords": [
         "ryangjchandler",
-        "package_slug"
+        "proxy"
     ],
     "homepage": "https://github.com/ryangjchandler/proxy",
     "license": "MIT",
